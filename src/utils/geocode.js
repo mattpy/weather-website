@@ -12,9 +12,9 @@ module.exports = geocode = (address, callback) => {
             const [longitude, latitude] = response.body.features[0].center;
             const location = response.body.features[0].place_name;
             callback(null, {
-                longitude: longitude,
-                latitude: latitude,
-                location: location     
+                longitude,
+                latitude,
+                location     
             });
         }
     });

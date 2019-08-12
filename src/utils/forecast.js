@@ -9,7 +9,10 @@ module.exports = forecast = (lat, long, callback) => {
         } else if (response.body.error) {
             callback(null, 'Unable to find location!');
         } else {
-            callback(null, response.body.daily.data[0].summary + ' It is currently ' + response.body.currently.temperature + ' degress out. There is a ' + response.body.currently.precipProbability + '% chance of rain.')
+            callback(null, {
+                forecast: response.body.daily.data[0].summary + ' It is currently ' + response.body.currently.temperature + ' degress out. There is a ' + response.body.currently.precipProbability + '% chance of rain.',
+                weekly: response.body.daily.summary
+            });
         }
     });
 };
